@@ -37,7 +37,13 @@ public partial class MainWindow : Window
     private void SetWindowVisible(bool visible)
     {
         WindowState = visible ? WindowState.Maximized : WindowState.Minimized;
-        if (!visible) return;
+        if (!visible)
+        {
+            Position = new PixelPoint(-1000, -1000);
+            Width = 0;
+            Height = 0;
+            return;
+        }
 
         Width = Screens.Primary!.Bounds.Width;
         Height = Screens.Primary.Bounds.Height;
