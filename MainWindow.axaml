@@ -9,11 +9,12 @@
         ExtendClientAreaChromeHints="NoChrome"
         ExtendClientAreaTitleBarHeightHint="-1"
         Background="Transparent"
-        Focusable="False"
         ShowInTaskbar="False"
         CanResize="False"
         HorizontalAlignment="Center"
         SizeChanged="UserTryToResize"
-        PositionChanged="UserTryToChangePosition">
+        PositionChanged="UserTryToChangePosition"
+        IsVisible="False"
+        ShowActivated="False">
         <Border Background="Red" Width="50" Height="50"></Border>
 </Window>
