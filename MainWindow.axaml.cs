@@ -130,12 +130,13 @@ public partial class MainWindow : Window
         btn1.Click += (_, _) =>
         {
             if (string.IsNullOrEmpty(_curSave.paths[index]))
+            {
                 OpenFiledialogAsync(this, index).ConfigureAwait(false).GetAwaiter();
-            return;
+                return;
+            }
+
             Process.Start(_curSave.paths[index]);
         };
-
-        Process.Start(_curSave.paths[0]);
         return btn1;
     }
 
