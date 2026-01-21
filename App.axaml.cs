@@ -11,7 +11,7 @@ public partial class App : Application
     private KeyboardHook kh = new();
     private double _firstButtonPressedTime;
     
-    private MainWindow _mainWindow;
+    private MainWindow? _mainWindow;
     private bool _userUsedIt;
     
     public override void Initialize()
@@ -29,7 +29,7 @@ public partial class App : Application
                         _userUsedIt = true;
                         OnFrameworkInitializationCompleted();
                     }
-                    SetWindowVisible(!_mainWindow.IsVisible);
+                    SetWindowVisible(!_mainWindow!.IsVisible);
                 }
         };
         kh.Start();
@@ -53,10 +53,12 @@ public partial class App : Application
         if (!visible)
         {
             _mainWindow.Hide();
+            _mainWindow.MainCanvas.Children.Clear();
             _mainWindow.Topmost = false;
         }
         else
         {
+            _mainWindow.SpawnCircle();
             _mainWindow.Show();
             _mainWindow.Topmost = true;
             _mainWindow.Width = _mainWindow.Screens.Primary!.Bounds.Width;
